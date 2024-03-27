@@ -1,15 +1,15 @@
 #include <iostream>
-#include "complex.h"
+#include "Complex.h"
 using namespace std;
 int main() {
-	complex a(-3, 2);
-	complex b(2, 2);
-	complex c(17, 10);
+	Complex a(-3, 2);
+	Complex b(2, 2);
+	Complex c(17, 10);
     
 	cout << "a =" << a.getre() << " + i" << a.getmn() << endl;
 	a = c;
 
-	complex d(c);
+	Complex d(c);
 	cout << "a =" << a.getre() << " + i " << a.getmn() << endl;
 	cout << "b =" << b.getre() << " + i " << b.getmn() << endl;
 	cout << "c =" << c.getre() << " + i " << c.getmn() << endl;
@@ -21,8 +21,8 @@ int main() {
 	cout << "c/a= " << (c / a).getre() << " + i " << (c / a).getmn() << endl;
 	string str = " ";
 	while (str != "no") {
-		cout << "Vvedi complex chiclo: " << endl; cin >> a; cout << a << endl;
-		cout << "Vvedi complex chiclo: " << endl; cin >> b; cout << b << endl;
+		cout << "Vvedi Complex chiclo: " << endl; cin >> a; cout << a << endl;
+		cout << "Vvedi Complex chiclo: " << endl; cin >> b; cout << b << endl;
 		d = a * b;
 		cout << d << endl;
 		d = a / b;
