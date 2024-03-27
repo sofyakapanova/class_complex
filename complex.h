@@ -15,25 +15,25 @@ void razdel(string st, string zn, string* w, int& k) {
 		     }
 	} k++;
 }
-class complex {
+class Complex {
 private: int re; int mn;
 public:
-	complex(int re_ = 0, int mn_ = 0) { re = re_; mn = mn_; }
-	complex(const complex& temp) { re = temp.re; mn = temp.mn; }
-	complex& operator=(complex temp) {
+	Complex(int re_ = 0, int mn_ = 0) { re = re_; mn = mn_; }
+	Complex(const Complex& temp) { re = temp.re; mn = temp.mn; }
+	Complex& operator=(Complex temp) {
 		re = temp.re;
 		mn = temp.mn;
 		return *this; }
-	~complex() { };
+	~Complex() { };
 	void setre(int a) { re = a; }
 	void setmn(int b) { mn = b; }
 	int getre() { return re; }
 	int getmn() { return mn; }
 
-	friend ostream& operator<< (ostream& out, complex tmp) {
+	friend ostream& operator<< (ostream& out, Complex tmp) {
 		out << tmp.re << " + i " << tmp.mn;
 		return out; };
-	friend istream& operator>> (istream& in, complex& tmp) {
+	friend istream& operator>> (istream& in, Complex& tmp) {
 		int k; string str;
 		in >> str;
 		string w[3];
@@ -53,23 +53,23 @@ public:
 			}
 		}
 		return in; };
-	complex operator+ (complex tmp) {
-		complex res;
+	Complex operator+ (Complex tmp) {
+		Complex res;
 		res.re = re + tmp.re;
 		res.mn = mn + tmp.mn;
 		return res; }
-	complex operator - (complex tmp) {
-		complex res;
+	Complex operator - (Complex tmp) {
+		Complex res;
 		res.re = re - tmp.re;
 		res.mn = mn - tmp.mn;
 		return res; }
-	complex operator * (complex tmp) {
-		complex res;
+	Complex operator * (Complex tmp) {
+		Complex res;
 		res.re = (re * tmp.re) - (mn * tmp.mn);
 		res.mn = (mn * tmp.re + re * tmp.mn);
 		return res; }
-	complex operator / (complex tmp) {
-		complex res;
+	Complex operator / (Complex tmp) {
+		Complex res;
 		res.re = (re * tmp.re + mn * tmp.mn) / (tmp.re * tmp.re + tmp.mn * tmp.mn);
 		res.mn = (mn * tmp.re - re * tmp.mn) / (tmp.re * tmp.re + tmp.mn * tmp.mn);
 		return res; }
