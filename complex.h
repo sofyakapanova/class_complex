@@ -12,7 +12,7 @@ void del_str_to_words(string st, string zn, string* w, int& k) {
 		else {
 			if (w[k].length() > 0) { w[++k] = ""; }
 			if (st[i] != ' ') { w[k] += st[i]; }
-		     }
+		}
 	} k++;
 }
 
@@ -20,14 +20,15 @@ void del_str_to_words(string st, string zn, string* w, int& k) {
 class Complex {
 private: int re; int mn; // спецификатор доступа 
 public:
-	Complex(int re_ = 0, int mn_ = 0) { re = re_; mn = mn_; }
-	
-        Complex(const Complex& temp) { re = temp.re; mn = temp.mn; }
-	
-        Complex& operator=(Complex temp) {
+	Complex(int re_ = 0, int mn_ = 0) { re = re_; mn = mn_; }  // конструктор создает класс
+
+	Complex(const Complex& temp) { re = temp.re; mn = temp.mn; } // конструктор для хр-я зн-й опер-й
+
+	Complex& operator=(Complex temp) {  // перегрузка =
 		re = temp.re;
 		mn = temp.mn;
-		return *this; }
+		return *this;
+	}
 
 	~Complex() { }; // деструктор
 
@@ -36,11 +37,12 @@ public:
 	int getre() { return re; }
 	int getmn() { return mn; }
 
-        // перегрузка вывода
+	// перегрузка вывода
 	friend ostream& operator<< (ostream& out, Complex tmp) {
 		out << tmp.re << " + i " << tmp.mn;
-		return out; };
-        // перегрузка ввода
+		return out;
+	};
+	// перегрузка ввода
 	friend istream& operator>> (istream& in, Complex& tmp) {
 		int k; string str;
 		in >> str;
@@ -54,30 +56,35 @@ public:
 				w[i].erase(l, 1);
 				if ((w[i] == "") or (w[i] == "-") or (w[i] == "+")) { w[i] = w[i] + "1"; }
 				tmp.mn = stoi(w[i]); // stoi преоб-т str в int (для "10" stoi возвр целочисл зн-е 10)
-			} else { tmp.re = stoi(w[i]); }
+			}
+			else { tmp.re = stoi(w[i]); }
 		}
-		return in; };
+		return in;
+	};
 
-        // перегрузка операций
+	// перегрузка операций
 	Complex operator + (Complex tmp) {
 		Complex res;
 		res.re = re + tmp.re; res.mn = mn + tmp.mn;
-		return res; }
+		return res;
+	}
 	Complex operator - (Complex tmp) {
 		Complex res;
 		res.re = re - tmp.re; res.mn = mn - tmp.mn;
-		return res; }
+		return res;
+	}
 	Complex operator * (Complex tmp) {
 		Complex res;
 		res.re = (re * tmp.re) - (mn * tmp.mn);
 		res.mn = (mn * tmp.re + re * tmp.mn);
-		return res; }
+		return res;
+	}
 	Complex operator / (Complex tmp) {
 		Complex res;
 		res.re = (re * tmp.re + mn * tmp.mn) / (tmp.re * tmp.re + tmp.mn * tmp.mn);
 		res.mn = (mn * tmp.re - re * tmp.mn) / (tmp.re * tmp.re + tmp.mn * tmp.mn);
-		return res; }
+		return res;
+	}
 }; // конец обьяв-я класса
-
 
 
